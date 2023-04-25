@@ -13,8 +13,10 @@ const createElements = () => {
 
 const Conversion = (temperature) => {
     const calCelsius =  (temperature * 9/5 ) + 32;
-    const calFahrenheit = (temperature - 32) * 5 / 9
-    return [calCelsius, calFahrenheit]
+    const calFahrenheit = (temperature - 32) * 5 / 9;
+    console.log(calCelsius, calFahrenheit)
+
+    return [calCelsius, calFahrenheit];
 }
 
 
@@ -25,25 +27,39 @@ const CreateVerification = () => {
     elements[1].addEventListener("click", () => {
         
         const NumberInput = Number(elements[0].value)
-        console.log(NumberInput)
         
         if (isNaN(NumberInput)) {
             window.confirm("Não é um número");
             return;
         }
         
-        Conversion(NumberInput)
-        showResult()
-        
-        
+        let result = Conversion(NumberInput)
+        console.log(result)
+        showTemperature(result)
+
     })  
     
 }
 
 
-function showResult() {
-    let Conversion = Conversion();
-    console.log(Conversion);
+function showTemperature(result) {
+
+    const body = document.querySelector("body")
+    const div = document.createElement("div")
+    body.appendChild(div)
+
+    const pCelsius = document.createElement("p")
+    const pFahrenheit = document.createElement("p")
+    pCelsius.innerHTML = `De celsius para fahrenheit: ${result[0]}`
+    pFahrenheit.innerHTML = `De fahrenheit para Celsius: ${result[1]}`
+
+    div.appendChild(pCelsius)
+    div.appendChild(pFahrenheit)
+    
 }
 
-CreateVerification()
+
+const showResult = () => CreateVerification()
+
+
+showResult()
