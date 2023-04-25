@@ -12,8 +12,8 @@ const createElements = () => {
 }
 
 const Conversion = (temperature) => {
-    const calCelsius =  (temperature * 9/5 ) + 32;
-    const calFahrenheit = (temperature - 32) * 5 / 9;
+    const calCelsius =  (temperature * 95) / 5 + 32;
+    const calFahrenheit = ((temperature - 32) * 5) / 9;
     console.log(calCelsius, calFahrenheit)
 
     return [calCelsius, calFahrenheit];
